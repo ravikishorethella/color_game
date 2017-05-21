@@ -28,6 +28,7 @@ var resetButton = document.querySelector("#reset");
 var easyBtn = document.querySelector("#easyBtn");
 var hardBtn = document.querySelector("#hardBtn");
 
+
 // focusing on the easy button
 easyBtn.addEventListener("click",function(){
     hardBtn.classList.remove("selected");
@@ -67,34 +68,38 @@ resetButton.addEventListener("click",function(){
     pickedColor = pickColor();
     // change the color display to match the picked color
     colorDisplay.textContent = pickedColor;
+    // change the messageDisplay text after winning the game
+    messageDisplay.textContent = "";
+    //change the text of the play again to new colors after starting the game
+    resetButton.textContent = "New Colors";
     // change the color for the squares    
     // iterate over the squares
     for(var i=0; i<squares.length; i++){
         squares[i].style.backgroundColor = colors[i];
     } 
-    h1.style.backgroundColor = "steelblue";
+    h1.style.background = "steelblue";
 });
 
 // iterating over all the squares
 for(var i = 0; i < squares.length; i++){
-    squares[i].style.backgroundColor = colors[i];
+    squares[i].style.background = colors[i];
     
     // adding the click listeners to the squares
     squares[i].addEventListener("click",function(){
         
         //the color should be of the clicked  
-        var clickedColor = this.style.backgroundColor;
+        var clickedColor = this.style.background;
         
         // chech the condition to see if the clickedColor matches with the pickedColor
         if(clickedColor === pickedColor){            
             messageDisplay.textContent = "Correct!";
             resetButton.textContent = "Play Again?";
             changeColors(clickedColor);
-            h1.style.backgroundColor = clickedColor;
+            h1.style.background = clickedColor;
         }else{
             // if the pickedcolor is not matched then we need to fade the color out
             // this is nothing bu tsetting the color to the original background color
-            this.style.backgroundColor = "#232323";
+            this.style.background = "#232323";
             messageDisplay.textContent = "Try Again";
         }
     });
