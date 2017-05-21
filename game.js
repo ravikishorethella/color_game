@@ -22,6 +22,22 @@ var messageDisplay = document.querySelector("#message");
 // selecting the button 
 var resetButton = document.querySelector("#reset");
 
+// selecting the easy and hard buttons
+var easyBtn = document.querySelector("#easyBtn");
+var hardBtn = document.querySelector("#hardBtn");
+
+// focusing on the easy button
+easyBtn.addEventListener("click",function(){
+    hardBtn.classList.remove("selected");
+    easyBtn.classList.add("selected");
+});
+
+// focusing on the hard button
+hardBtn.addEventListener("click",function(){
+    hardBtn.classList.add("selected");
+    easyBtn.classList.remove("selected");
+});
+
 // clicking the reset button
 resetButton.addEventListener("click",function(){
     // generate all new colors
